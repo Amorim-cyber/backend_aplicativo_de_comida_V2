@@ -18,11 +18,8 @@ public class ControllerQuantidades extends HttpServlet {
 	private static Restaurante restaurante;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RestauranteDAO dao = Mapper.toDAO(restaurante);
-		
-		request.setAttribute("restaurante", dao);
-		request.getRequestDispatcher("Quantidades.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
