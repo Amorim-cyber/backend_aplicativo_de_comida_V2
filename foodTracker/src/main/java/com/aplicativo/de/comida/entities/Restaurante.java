@@ -14,6 +14,9 @@ public class Restaurante {
 	private String url;
 	private String address;
 	
+	public Restaurante() {
+	}
+
 	public Restaurante(Long id, String srcImg,
 			String name, String rate,
 			String type, Double range, String time,

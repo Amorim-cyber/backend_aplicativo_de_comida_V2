@@ -24,24 +24,5 @@ public class Mapper {
 		return dao;
 		
 	}
-	
-	public static Restaurante toEntity(RestauranteDAO dao) {
-		
-		Restaurante restaurante = new Restaurante();
-		
-		restaurante.setId(dao.getId());
-		restaurante.setSrcImg(dao.getSrcImg());
-		restaurante.setName(dao.getName());
-		restaurante.setRate(dao.getRate());
-		restaurante.setType(dao.getType());
-		restaurante.setRange(dao.getRange());
-		restaurante.setTime(dao.getTime());
-		restaurante.setShipment(dao.getShipment());
-		restaurante.setDiscount(dao.getDiscount());
-		restaurante.setUrl(dao.getUrl());
-		restaurante.setAddress(dao.getAddress());
-		
-		return restaurante;
-	}
 
 }

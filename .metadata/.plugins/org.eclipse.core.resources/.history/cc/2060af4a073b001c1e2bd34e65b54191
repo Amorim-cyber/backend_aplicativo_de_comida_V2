@@ -18,7 +18,7 @@ public class RestauranteDAO {
 	public RestauranteDAO() {
 	}
 
-	public RestauranteDAO(String address, Double range) {
+	public RestauranteDAO(Double range, String address) {
 		this.range = range;
 		this.address = address;
 	}

@@ -14,11 +14,8 @@ public class RestauranteDAO {
 	private String url;
 	private String address;
 	
-	
-	public RestauranteDAO() {
-	}
-
-	public RestauranteDAO(String address, Double range) {
+	public RestauranteDAO(String type, Double range, String address) {
+		this.type = type;
 		this.range = range;
 		this.address = address;
 	}

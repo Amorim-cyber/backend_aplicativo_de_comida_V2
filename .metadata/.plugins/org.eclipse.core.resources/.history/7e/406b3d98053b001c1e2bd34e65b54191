@@ -1,6 +1,6 @@
-package com.aplicativo.de.comida.entities.dao;
+package com.aplicativo.de.comida.entities;
 
-public class RestauranteDAO {
+public class Restaurante {
 	
 	private Long id;
 	private String srcImg;
@@ -14,12 +14,21 @@ public class RestauranteDAO {
 	private String url;
 	private String address;
 	
-	
-	public RestauranteDAO() {
-	}
-
-	public RestauranteDAO(String address, Double range) {
+	public Restaurante(Long id, String srcImg,
+			String name, String rate,
+			String type, Double range, String time,
+			String shipment, String discount,
+			String url, String address) {
+		this.id = id;
+		this.srcImg = srcImg;
+		this.name = name;
+		this.rate = rate;
+		this.type = type;
 		this.range = range;
+		this.time = time;
+		this.shipment = shipment;
+		this.discount = discount;
+		this.url = url;
 		this.address = address;
 	}
 	
