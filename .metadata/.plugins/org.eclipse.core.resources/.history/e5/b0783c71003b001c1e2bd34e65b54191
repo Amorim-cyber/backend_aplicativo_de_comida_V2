@@ -12,7 +12,7 @@
 
 
 <div class="container">
-	<form action="quantidadeRestaurantes" method="post">
+	<form action="produto" method="post">
 		<h3>TESTE API</h3>
 		<div class="form-group">
 			<label >Endereço</label>
