@@ -13,13 +13,6 @@ public class RestauranteDAO {
 	private String discount;
 	private String url;
 	private String address;
-	
-	public RestauranteDAO(String type, Double range, String address) {
-		this.type = type;
-		this.range = range;
-		this.address = address;
-	}
-	
 	public Long getId() {
 		return id;
 	}
