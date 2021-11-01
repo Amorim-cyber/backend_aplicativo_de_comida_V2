@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Food Tracker</title>
+<%@ include file="Header.jsp" %>
+</head>
+<body>
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Todos</button>
+  <button type="button" class="btn btn-default">Pizza</button>
+  <button type="button" class="btn btn-default">Lanches</button>
+  <button type="button" class="btn btn-default">Japonesa</button>
+</div>
+
+<%@ include file="Footer.jsp" %>
+</body>
+</html>
