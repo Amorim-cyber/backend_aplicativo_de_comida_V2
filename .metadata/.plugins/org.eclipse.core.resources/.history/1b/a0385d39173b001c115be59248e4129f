@@ -42,7 +42,6 @@
 		<br>
 		<input type="submit" name="dist" value="todos"class="btn btn-primary">
 	</form>
-	<%@ include file="Quantidades.jsp" %>
 </div>
 
 

@@ -38,11 +38,9 @@
 			  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
 			  <label class="form-check-label" for="inlineRadio3">3-4 km</label>
 			</div>
-		</div>
 		<br>
 		<input type="submit" name="dist" value="todos"class="btn btn-primary">
 	</form>
-	<%@ include file="Quantidades.jsp" %>
 </div>
 
 
