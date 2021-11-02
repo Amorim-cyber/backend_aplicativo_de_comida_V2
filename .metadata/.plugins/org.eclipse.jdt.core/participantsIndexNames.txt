@@ -1,3 +1,7 @@
 INDEX VERSION 1.131
 C:\Users\lucca\OneDrive\Documentos\outros\fiap\teste\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2405916377.index
 \foodTracker\src\main\java
+C:\Users\lucca\OneDrive\Documentos\outros\fiap\teste\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1027731103.index
+\foodTracker\src\main\java
+C:\Users\lucca\OneDrive\Documentos\outros\fiap\teste\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1674824767.index
+\foodTracker\src\main\java

@@ -14,6 +14,45 @@ import com.aplicativo.de.comida.interfaces.InterfaceRestaurante;
 public class Service implements InterfaceRestaurante{
 	
 	private Connection conexao;
+	
+	@Override
+	public Integer getQtdByAdrRange(String adr, Double range) {
+		PreparedStatement stmt= null;
+		Integer result = 0;
+		ResultSet rs = null;
+		
+		try {
+			conexao= DBManager.obterConexao();
+			conexao.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+			
+			String sql = "SELECT * FROM T_RESTAURANTE WHERE \r\n"
+					+ "NM_END_ORI = ? AND\r\n"
+					+ "NR_DIST_REST <= ? AND "
+					+ "NR_DIST_REST > ?";
+			stmt= conexao.prepareStatement(sql);
+			stmt.setString(1, adr);
+			stmt.setDouble(2, range);
+			stmt.setDouble(3, range-1);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				System.out.println(rs.getString("NM_REST"));
+				result += 1;
+			}
+			System.out.println(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				stmt.close();
+				rs.close();
+				conexao.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
 
 	@Override
 	public Integer getQtdByAdrTypeRange(String adr, String type, Double range) {
@@ -74,6 +113,8 @@ public class Service implements InterfaceRestaurante{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }
 

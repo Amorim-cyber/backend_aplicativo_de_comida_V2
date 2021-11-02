@@ -6,6 +6,8 @@ import com.aplicativo.de.comida.entities.dao.RestauranteDAO;
 
 public interface InterfaceRestaurante {
 	
+	public abstract Integer getQtdByAdrRange(String adr, Double range);
+	
 	public abstract Integer getQtdByAdrTypeRange(String adr, String type, Double range);
 	
 	public abstract Integer getQtdByAdrTypeRangeRate(String adr, String type, Double range, String rate);

@@ -89,6 +89,13 @@ public class RestauranteDAO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	@Override
+	public String toString() {
+		return "RestauranteDAO [id=" + id + ", srcImg=" + srcImg + ", name=" + name + ", rate=" + rate + ", type="
+				+ type + ", range=" + range + ", time=" + time + ", shipment=" + shipment + ", discount=" + discount
+				+ ", url=" + url + ", address=" + address + "]";
+	}
 	
 	
 

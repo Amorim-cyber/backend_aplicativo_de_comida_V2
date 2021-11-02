@@ -18,10 +18,6 @@ public class ControllerQuantidades extends HttpServlet {
 	private static Restaurante restaurante;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RestauranteDAO dao = Mapper.toDAO(restaurante);
-		
-		request.setAttribute("restaurante", dao);
 		request.getRequestDispatcher("Quantidades.jsp").forward(request, response);
 	}
 
@@ -32,7 +28,7 @@ public class ControllerQuantidades extends HttpServlet {
 		Double.parseDouble(request.getParameter("inlineRadioOptions").split("-")[1].replace(" km", ""));
 		
 		RestauranteDAO dao = new RestauranteDAO(endereco,distancia);
-		
+		System.out.println(dao);
 		restaurante = Mapper.toEntity(dao);
 		
 		request.getRequestDispatcher("Main.jsp").forward(request, response);
