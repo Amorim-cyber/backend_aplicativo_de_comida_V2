@@ -40,7 +40,13 @@
 			</div>
 		</div>
 		<br>
-		<input type="submit" name="dist" value="todos"class="btn btn-primary">
+		<div class="buttons">
+			<input type="submit" name="tipo" value="Todos" class="btn btn-primary">
+			<input type="submit" name="tipo" value="Pizza" class="btn btn-primary">
+			<input type="submit" name="tipo" value="Lanches" class="btn btn-primary">
+			<input type="submit" name="tipo" value="Japonesa" class="btn btn-primary">
+		</div>
+		
 	</form>
 	<%@ include file="Quantidades.jsp" %>
 </div>

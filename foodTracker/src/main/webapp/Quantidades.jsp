@@ -4,41 +4,69 @@
 <% 
 	Service service = new Service();
 	String end = request.getParameter("endereco"); 
+	String tipo = request.getParameter("tipo"); 
+	String range = request.getParameter("inlineRadioOptions");
 	Double dist = null;
 	
-	Integer total = null;
+	Integer total = 0;
 	
-	Integer rate1 = null;
-	Integer rate2 = null;
-	Integer rate3 = null;
-	Integer rate4 = null;
+	Integer rate1 = 0;
+	Integer rate2 = 0;
+	Integer rate3 = 0;
+	Integer rate4 = 0;
 	
-	Integer time1 = null;
-	Integer time2 = null;
-	Integer time3 = null;
-	Integer time4 = null;
+	Integer time1 = 0;
+	Integer time2 = 0;
+	Integer time3 = 0;
+	Integer time4 = 0;
 	
-	if(end != null){
+	if(range != null){
 		dist = Double.parseDouble(request.getParameter("inlineRadioOptions").split("-")[1].replace(" km", ""));
-		total = service.getQtdByAdrRange(end, dist);
 		
-		rate1 = service.getQtdByAdrRangeRate(end, dist, "5.0");
-		request.setAttribute("listaRate1",service.getListByAdrRangeRate(end, dist, "5.0"));
-		rate2 = service.getQtdByAdrRangeRate(end, dist, "4.5");
-		request.setAttribute("listaRate2",service.getListByAdrRangeRate(end, dist, "4.5"));
-		rate3 = service.getQtdByAdrRangeRate(end, dist, "4.0");
-		request.setAttribute("listaRate3",service.getListByAdrRangeRate(end, dist, "4.0"));
-		rate4 = service.getQtdByAdrRangeRate(end, dist, "3.5");
-		request.setAttribute("listaRate4",service.getListByAdrRangeRate(end, dist, "4.5"));
 		
-		time1 = service.getQtdByAdrRangeTime(end, dist, 30);
-		request.setAttribute("listaTime1",service.getListByAdrRangeTime(end, dist, 30));
-		time2 = service.getQtdByAdrRangeTime(end, dist, 45);
-		request.setAttribute("listaTime2",service.getListByAdrRangeTime(end, dist, 45));
-		time3 = service.getQtdByAdrRangeTime(end, dist, 60);
-		request.setAttribute("listaTime3",service.getListByAdrRangeTime(end, dist, 60));
-		time4 = service.getQtdByAdrRangeTime(end, dist, 61);
-		request.setAttribute("listaTime4",service.getListByAdrRangeTime(end, dist, 61));
+		if(tipo.equals("Todos")){
+			total = service.getQtdByAdrRange(end, dist);
+			
+			rate1 = service.getQtdByAdrRangeRate(end, dist, "5.0");
+			request.setAttribute("listaRate1",service.getListByAdrRangeRate(end, dist, "5.0"));
+			rate2 = service.getQtdByAdrRangeRate(end, dist, "4.5");
+			request.setAttribute("listaRate2",service.getListByAdrRangeRate(end, dist, "4.5"));
+			rate3 = service.getQtdByAdrRangeRate(end, dist, "4.0");
+			request.setAttribute("listaRate3",service.getListByAdrRangeRate(end, dist, "4.0"));
+			rate4 = service.getQtdByAdrRangeRate(end, dist, "3.5");
+			request.setAttribute("listaRate4",service.getListByAdrRangeRate(end, dist, "4.5"));
+			
+			time1 = service.getQtdByAdrRangeTime(end, dist, 30);
+			request.setAttribute("listaTime1",service.getListByAdrRangeTime(end, dist, 30));
+			time2 = service.getQtdByAdrRangeTime(end, dist, 45);
+			request.setAttribute("listaTime2",service.getListByAdrRangeTime(end, dist, 45));
+			time3 = service.getQtdByAdrRangeTime(end, dist, 60);
+			request.setAttribute("listaTime3",service.getListByAdrRangeTime(end, dist, 60));
+			time4 = service.getQtdByAdrRangeTime(end, dist, 61);
+			request.setAttribute("listaTime4",service.getListByAdrRangeTime(end, dist, 61));
+		}else{
+			total = service.getQtdByAdrTypeRange(end, tipo,dist);
+			
+			rate1 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "5.0");
+			request.setAttribute("listaRate1",service.getListByAdrTypeRangeRate(end, tipo, dist, "5.0"));
+			rate2 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "4.5");
+			request.setAttribute("listaRate2",service.getListByAdrTypeRangeRate(end, tipo, dist, "4.5"));
+			rate3 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "4.0");
+			request.setAttribute("listaRate3",service.getListByAdrTypeRangeRate(end, tipo, dist, "4.0"));
+			rate4 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "3.5");
+			request.setAttribute("listaRate4",service.getListByAdrTypeRangeRate(end, tipo, dist, "4.5"));
+			
+			time1 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 30);
+			request.setAttribute("listaTime1",service.getListByAdrTypeRangeTime(end, tipo, dist, 30));
+			time2 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 45);
+			request.setAttribute("listaTime2",service.getListByAdrTypeRangeTime(end, tipo, dist, 45));
+			time3 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 60);
+			request.setAttribute("listaTime3",service.getListByAdrTypeRangeTime(end, tipo, dist, 60));
+			time4 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 61);
+			request.setAttribute("listaTime4",service.getListByAdrTypeRangeTime(end, tipo, dist, 61));
+			
+		}
+		
 		
 	}
 		
@@ -50,10 +78,14 @@
 		<table class="table table-striped" >
 			<tr>
 				<th>Total Restaurantes</th>
+				<th>Tipo</th>
+				<th>Distância</th>
 			</tr>
 			<c:if test="${not empty param.endereco}">
 			<tr>
 				<td><%= total %></td>
+				<td><%= tipo %></td>
+				<td><%= range %></td>
 			</tr>
 			</c:if>
 		</table>
@@ -129,7 +161,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 15 - 30 min</h5>
 		      </div>
 		      <div class="modal-body">
 		      		<c:forEach var = "t1" items="${listaTime1}">
@@ -156,7 +188,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 30 - 45 min</h5>
 		      </div>
 		      <div class="modal-body">
 					<c:forEach var = "t2" items="${listaTime2}">
@@ -183,7 +215,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 45 - 60 min</h5>
 		      </div>
 		      <div class="modal-body">
 					<c:forEach var = "t3" items="${listaTime3}">
@@ -210,7 +242,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes > 60 min</h5>
 		      </div>
 		      <div class="modal-body">
 					<c:forEach var = "t4" items="${listaTime4}">
@@ -238,7 +270,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 5.0 - 4.5 estrelas</h5>
 		      </div>
 		      <div class="modal-body">
 		      		<c:forEach var = "r1" items="${listaRate1}">
@@ -265,7 +297,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 4.5 - 4.0 estrelas</h5>
 		      </div>
 		      <div class="modal-body">
 					<c:forEach var = "r2" items="${listaRate2}">
@@ -292,7 +324,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 4.0 - 3.5 estrelas</h5>
 		      </div>
 		      <div class="modal-body">
 					<c:forEach var = "r3" items="${listaRate3}">
@@ -319,7 +351,7 @@
 		  <div class="modal-dialog modal-dialog-scrollable" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 3.5 - 3.0 estrelas</h5>
 		      </div>
 		      <div class="modal-body">
 					<c:forEach var = "r4" items="${listaRate4}">

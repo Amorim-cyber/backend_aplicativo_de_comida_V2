@@ -18,6 +18,7 @@ INDEX VERSION 1.131+C:\Users\lucca\OneDrive\Documentos\outros\fiap\teste\.metada
 3783089390.index
 4091608605.index
 1393023422.index
+781196278.index
 4034292642.index
 3411081267.index
 3829010393.index

@@ -16,7 +16,7 @@ public interface InterfaceRestaurante {
 	
 	public abstract Integer getQtdByAdrTypeRangeRate(String adr, String type, Double range, String rate);
 	
-	public abstract Integer getQtdByAdrTypeRangeTime(String adr, String type, Double range, String time);
+	public abstract Integer getQtdByAdrTypeRangeTime(String adr, String type, Double range, Integer time);
 	
 	public abstract List<RestauranteDAO> getListByAdrRangeRate(String adr, Double range, String rate);
 	
@@ -24,6 +24,6 @@ public interface InterfaceRestaurante {
 	
 	public abstract List<RestauranteDAO> getListByAdrTypeRangeRate(String adr, String type, Double range, String rate);
 	
-	public abstract List<RestauranteDAO> getListByAdrTypeRangeTime(String adr, String type, Double range, String time);
+	public abstract List<RestauranteDAO> getListByAdrTypeRangeTime(String adr, String type, Double range, Integer time);
 
 }

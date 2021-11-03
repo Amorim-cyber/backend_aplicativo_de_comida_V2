@@ -7,6 +7,15 @@
     
 }
 
+.buttons{
+	display:flex;
+    flex-direction: row;
+}
+
+.buttons input{
+	margin-right:8px;
+}	
+
 .card-body{
 	display:flex;
     flex-direction: row;
