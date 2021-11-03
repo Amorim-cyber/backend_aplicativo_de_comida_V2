@@ -27,11 +27,14 @@
 		rate3 = service.getQtdByAdrRangeRate(end, dist, "4.0");
 		rate4 = service.getQtdByAdrRangeRate(end, dist, "3.5");
 		
-		time1 = service.getQtdByAdrRangeRate(end, dist, 30);
-		time2 = service.getQtdByAdrRangeRate(end, dist, 45);
-		time3 = service.getQtdByAdrRangeRate(end, dist, 60);
-		time4 = service.getQtdByAdrRangeRate(end, dist, 61);
-		
+		time1 = service.getQtdByAdrRangeTime(end, dist, 30);
+		request.setAttribute("listaTime1",service.getListByAdrRangeTime(end, dist, 30));
+		time2 = service.getQtdByAdrRangeTime(end, dist, 45);
+		request.setAttribute("listaTime2",service.getListByAdrRangeTime(end, dist, 45));
+		time3 = service.getQtdByAdrRangeTime(end, dist, 60);
+		request.setAttribute("listaTime3",service.getListByAdrRangeTime(end, dist, 60));
+		time4 = service.getQtdByAdrRangeTime(end, dist, 61);
+		request.setAttribute("listaTime4",service.getListByAdrRangeTime(end, dist, 61));
 		
 	}
 		
@@ -77,11 +80,137 @@
 			</tr>
 			<c:if test="${not empty param.endereco}">
 			<tr>
-				<td><%= time1 %></td>
-				<td><%= time2 %></td>
-				<td><%= time3 %></td>
-				<td><%= time4 %></td>
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#time1">
+	  					<%= time1 %>
+					</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#time2">
+	  					<%= time2 %>
+					</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#time3">
+	  					<%= time3 %>
+					</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#time4">
+	  					<%= time4 %>
+					</button>
+				</td>
 			</tr>
 			</c:if>
 		</table>
+		
+		<!-- Modals -->
+		<div class="modal fade" id="time1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		      </div>
+		      <div class="modal-body">
+		      		<c:forEach var = "t1" items="${listaTime1}">
+		      		<div class="card" style="margin-bottom: 5px;">
+					  <div class="card-body">
+					  	<img src="${t1.getSrcImg()}" class="img"></img>
+					    <div class="details">
+					    	<a href="${t1.getUrl()}" target="_blank">${t1.getName()}</a>
+					    	<span>Rating: ${t1.getRate()} | Tipo: ${t1.getType()} | Distância: ${t1.getRange()} km | Prazo máx: ${t1.getTime()} min | Frete: ${t1.getShipment()} | ${t1.getDiscount()}
+					    	</span>
+					    </div>
+					  </div>
+					</div>
+		      		</c:forEach>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="modal fade" id="time2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		      </div>
+		      <div class="modal-body">
+					<c:forEach var = "t2" items="${listaTime2}">
+		      		<div class="card" style="margin-bottom: 5px;">
+					  <div class="card-body">
+					  	<img src="${t2.getSrcImg()}" class="img"></img>
+					    <div class="details">
+					    	<a href="${t2.getUrl()}" target="_blank">${t2.getName()}</a>
+					    	<span>Rating: ${t2.getRate()} | Tipo: ${t2.getType()} | Distância: ${t2.getRange()} km | Prazo máx: ${t2.getTime()} min | Frete: ${t2.getShipment()} | ${t2.getDiscount()}
+					    	</span>
+					    </div>
+					  </div>
+					</div>
+		      		</c:forEach>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="modal fade" id="time3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		      </div>
+		      <div class="modal-body">
+					<c:forEach var = "t3" items="${listaTime3}">
+		      		<div class="card" style="margin-bottom: 5px;">
+					  <div class="card-body">
+					  	<img src="${t3.getSrcImg()}" class="img"></img>
+					    <div class="details">
+					    	<a href="${t3.getUrl()}" target="_blank">${t3.getName()}</a>
+					    	<span>Rating: ${t3.getRate()} | Tipo: ${t3.getType()} | Distância: ${t3.getRange()} km | Prazo máx: ${t3.getTime()} min | Frete: ${t3.getShipment()} | ${t3.getDiscount()}
+					    	</span>
+					    </div>
+					  </div>
+					</div>
+		      		</c:forEach>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="modal fade" id="time4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes</h5>
+		      </div>
+		      <div class="modal-body">
+					<c:forEach var = "t4" items="${listaTime4}">
+		      		<div class="card" style="margin-bottom: 5px;">
+					  <div class="card-body">
+					  	<img src="${t4.getSrcImg()}" class="img"></img>
+					    <div class="details">
+					    	<a href="${t4.getUrl()}" target="_blank">${t4.getName()}</a>
+					    	<span>Rating: ${t4.getRate()} | Tipo: ${t4.getType()} | Distância: ${t4.getRange()} km | Prazo máx: ${t4.getTime()} min | Frete: ${t4.getShipment()} | ${t4.getDiscount()}
+					    	</span>
+					    </div>
+					  </div>
+					</div>
+		      		</c:forEach>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
 	</div>

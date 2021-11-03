@@ -8,7 +8,7 @@ public class Restaurante {
 	private String rate;
 	private String type;
 	private Double range;
-	private String time;
+	private Integer time;
 	private String shipment;
 	private String discount;
 	private String url;
@@ -19,7 +19,7 @@ public class Restaurante {
 
 	public Restaurante(Long id, String srcImg,
 			String name, String rate,
-			String type, Double range, String time,
+			String type, Double range, Integer time,
 			String shipment, String discount,
 			String url, String address) {
 		this.id = id;
@@ -71,10 +71,10 @@ public class Restaurante {
 	public void setRange(Double range) {
 		this.range = range;
 	}
-	public String getTime() {
+	public Integer getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(Integer time) {
 		this.time = time;
 	}
 	public String getShipment() {

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.img{
+	width:14%;
+    height:50px;
+    border-radius: 50px;
+    background-color: red;
+    
+}
+
+.card-body{
+	display:flex;
+    flex-direction: row;
+}
+
+.details{
+	width:96%;
+	padding: 10px;
+	display:flex;
+    flex-direction: column;
+}

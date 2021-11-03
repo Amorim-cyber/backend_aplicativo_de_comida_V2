@@ -33,3 +33,11 @@
 127.0.0.1 - - [03/Nov/2021:08:16:13 -0300] "GET / HTTP/1.1" 404 763
 0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:16:14 -0300] "GET /foodTracker/Main.jsp HTTP/1.1" 200 2503
 0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:16:22 -0300] "GET /foodTracker/Main.jsp?endereco=Rua+Desembargador+Roberto+medeiros%2C+70&inlineRadioOptions=0-1+km&dist=todos HTTP/1.1" 200 2722
+127.0.0.1 - - [03/Nov/2021:08:37:05 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:37:06 -0300] "GET /foodTracker/Main.jsp HTTP/1.1" 200 2504
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:37:15 -0300] "GET /foodTracker/Main.jsp?endereco=Rua+Desembargador+Roberto+medeiros%2C+70&inlineRadioOptions=0-1+km&dist=todos HTTP/1.1" 200 2734
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:38:37 -0300] "GET /foodTracker/Main.jsp HTTP/1.1" 200 2504
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:38:46 -0300] "GET /foodTracker/Main.jsp?endereco=Rua+Desembargador+Roberto+medeiros%2C+70&inlineRadioOptions=0-1+km&dist=todos HTTP/1.1" 500 2530
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:39:56 -0300] "GET /foodTracker/Main.jsp HTTP/1.1" 200 2504
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:40:03 -0300] "GET /foodTracker/Main.jsp?endereco=Rua+Desembargador+Roberto+medeiros%2C+70&inlineRadioOptions=0-1+km&dist=todos HTTP/1.1" 200 2723
+0:0:0:0:0:0:0:1 - - [03/Nov/2021:08:42:11 -0300] "GET /foodTracker/Main.jsp?endereco=Rua+Desembargador+Roberto+medeiros%2C+70&inlineRadioOptions=2-3+km&dist=todos HTTP/1.1" 200 2725

@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.aplicativo.de.comida.dbConnection.DBManager;
+import com.aplicativo.de.comida.entities.Restaurante;
 import com.aplicativo.de.comida.entities.dao.RestauranteDAO;
 import com.aplicativo.de.comida.interfaces.InterfaceRestaurante;
+import com.aplicativo.de.comida.mapper.Mapper;
 
 
 public class Service implements InterfaceRestaurante{
@@ -93,7 +96,7 @@ public class Service implements InterfaceRestaurante{
 	}
 	
 	@Override
-	public Integer getQtdByAdrRangeRate(String adr, Double range, Integer time) {
+	public Integer getQtdByAdrRangeTime(String adr, Double range, Integer time) {
 		PreparedStatement stmt= null;
 		Integer result = 0;
 		ResultSet rs = null;
@@ -200,6 +203,83 @@ public class Service implements InterfaceRestaurante{
 	}
 
 	@Override
+	public List<RestauranteDAO> getListByAdrRangeTime(String adr, Double range, Integer time) {
+		PreparedStatement stmt= null;
+		List<RestauranteDAO> listaDAO = new ArrayList<RestauranteDAO>();
+		ResultSet rs = null;
+		
+		String sql;
+		
+		try {
+			conexao= DBManager.obterConexao();
+			if(time > 60) {
+				sql = "SELECT * FROM T_RESTAURANTE WHERE"
+						+ " NM_END_ORI = ? AND"
+						+ " NR_DIST_REST <= ? AND"
+						+ " NR_DIST_REST > ? AND"
+						+ " DS_PRAZO_REST > ?";
+				
+				stmt= conexao.prepareStatement(sql);
+				stmt.setString(1, adr);
+				stmt.setDouble(2, range);
+				stmt.setDouble(3, range-1);
+				stmt.setDouble(4, time);
+				
+			}else {
+				sql = "SELECT * FROM T_RESTAURANTE WHERE"
+						+ " NM_END_ORI = ? AND"
+						+ " NR_DIST_REST <= ? AND"
+						+ " NR_DIST_REST > ? AND"
+						+ " DS_PRAZO_REST <= ? AND"
+						+ " DS_PRAZO_REST > ?";
+				
+				stmt= conexao.prepareStatement(sql);
+				stmt.setString(1, adr);
+				stmt.setDouble(2, range);
+				stmt.setDouble(3, range-1);
+				stmt.setDouble(4, time);
+				stmt.setDouble(5, time - 15);
+			}
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				Long id = rs.getLong("ID_REST");
+				String img = rs.getString("DS_IMG_REST");
+				String nome = rs.getString("NM_REST");
+				String rate = rs.getString("NR_RAT_REST");
+				String tipo = rs.getString("DS_TIPO_REST");
+				Double distancia = rs.getDouble("NR_DIST_REST");
+				Integer prazo = rs.getInt("DS_PRAZO_REST");
+				String frete = rs.getString("DS_FRETE_REST");
+				String desconto = rs.getString("DS_DESC_REST");
+				String url = rs.getString("DS_URL_REST");
+				String endereco = rs.getString("NM_END_ORI");
+				
+				Restaurante restaurante = 
+				new Restaurante(id, img,
+						nome, rate,
+						tipo, distancia, prazo,
+						frete, desconto,
+						url, endereco);
+				
+				listaDAO.add(Mapper.toDAO(restaurante));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				stmt.close();
+				rs.close();
+				conexao.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return listaDAO;
+	}
+
+	@Override
 	public List<RestauranteDAO> getListByAdrTypeRangeRate(String adr, String type, Double range, String rate) {
 		// TODO Auto-generated method stub
 		return null;
@@ -213,16 +293,5 @@ public class Service implements InterfaceRestaurante{
 
 	
 
-	
-
-	
-
 }
 
-
-/* SELECT COUNT(*) "QTD_RESTAURANTE" FROM T_RESTAURANTE WHERE 
-NM_END_ORI = 'Rua Desembarbador Roberto medeiros, 70' AND
-DS_TIPO_REST = 'Pizza' AND
-NR_DIST_REST <= 1 AND 
-(TO_NUMBER(NR_RAT_REST,'9.9') = 5.0 OR
-TO_NUMBER(NR_RAT_REST,'9.9') > 4.5); */
