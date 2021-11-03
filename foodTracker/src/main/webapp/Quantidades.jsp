@@ -7,18 +7,32 @@
 	Double dist = null;
 	
 	Integer total = null;
+	
 	Integer rate1 = null;
 	Integer rate2 = null;
 	Integer rate3 = null;
 	Integer rate4 = null;
 	
+	Integer time1 = null;
+	Integer time2 = null;
+	Integer time3 = null;
+	Integer time4 = null;
+	
 	if(end != null){
 		dist = Double.parseDouble(request.getParameter("inlineRadioOptions").split("-")[1].replace(" km", ""));
 		total = service.getQtdByAdrRange(end, dist);
+		
 		rate1 = service.getQtdByAdrRangeRate(end, dist, "5.0");
 		rate2 = service.getQtdByAdrRangeRate(end, dist, "4.5");
 		rate3 = service.getQtdByAdrRangeRate(end, dist, "4.0");
 		rate4 = service.getQtdByAdrRangeRate(end, dist, "3.5");
+		
+		time1 = service.getQtdByAdrRangeRate(end, dist, 30);
+		time2 = service.getQtdByAdrRangeRate(end, dist, 45);
+		time3 = service.getQtdByAdrRangeRate(end, dist, 60);
+		time4 = service.getQtdByAdrRangeRate(end, dist, 61);
+		
+		
 	}
 		
 	
@@ -39,10 +53,10 @@
 		<h1>Quantidade por rating</h1>
 		<table class="table table-striped" >
 			<tr>
-				<th>5.0 - 4.5</th>
-				<th>4.5 - 4.0</th>
-				<th>4.0 - 3.5</th>
-				<th>3.5 - 3.0</th>
+				<th>5.0 - 4.5 estrelas</th>
+				<th>4.5 - 4.0 estrelas</th>
+				<th>4.0 - 3.5 estrelas</th>
+				<th>3.5 - 3.0 estrelas</th>
 			</tr>
 			<c:if test="${not empty param.endereco}">
 			<tr>
@@ -50,6 +64,23 @@
 				<td><%= rate2 %></td>
 				<td><%= rate3 %></td>
 				<td><%= rate4 %></td>
+			</tr>
+			</c:if>
+		</table>
+		<h1>Quantidade por prazo</h1>
+		<table class="table table-striped" >
+			<tr>
+				<th>15 - 30 min</th>
+				<th>30 - 45 min</th>
+				<th>45 - 60 min</th>
+				<th>> 60 min</th>
+			</tr>
+			<c:if test="${not empty param.endereco}">
+			<tr>
+				<td><%= time1 %></td>
+				<td><%= time2 %></td>
+				<td><%= time3 %></td>
+				<td><%= time4 %></td>
 			</tr>
 			</c:if>
 		</table>

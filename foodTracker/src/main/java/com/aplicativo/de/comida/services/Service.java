@@ -23,8 +23,6 @@ public class Service implements InterfaceRestaurante{
 		
 		try {
 			conexao= DBManager.obterConexao();
-			conexao.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-			
 			String sql = "SELECT * FROM T_RESTAURANTE WHERE"
 					+ " NM_END_ORI = ? AND"
 					+ " NR_DIST_REST <= ? AND"
@@ -37,7 +35,6 @@ public class Service implements InterfaceRestaurante{
 			while(rs.next()) {
 				result += 1;
 			}
-			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
@@ -61,7 +58,6 @@ public class Service implements InterfaceRestaurante{
 		
 		try {
 			conexao= DBManager.obterConexao();
-			conexao.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			
 			String sql = "SELECT * FROM T_RESTAURANTE WHERE"
 					+ " NM_END_ORI = ? AND"
@@ -81,7 +77,65 @@ public class Service implements InterfaceRestaurante{
 			while(rs.next()) {
 				result += 1;
 			}
-			System.out.println(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				stmt.close();
+				rs.close();
+				conexao.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public Integer getQtdByAdrRangeRate(String adr, Double range, Integer time) {
+		PreparedStatement stmt= null;
+		Integer result = 0;
+		ResultSet rs = null;
+		
+		try {
+			conexao= DBManager.obterConexao();
+			
+			String sql;
+			
+			if(time > 60) {
+				sql = "SELECT * FROM T_RESTAURANTE WHERE"
+						+ " NM_END_ORI = ? AND"
+						+ " NR_DIST_REST <= ? AND"
+						+ " NR_DIST_REST > ? AND"
+						+ " DS_PRAZO_REST > ?";
+				
+				stmt= conexao.prepareStatement(sql);
+				stmt.setString(1, adr);
+				stmt.setDouble(2, range);
+				stmt.setDouble(3, range-1);
+				stmt.setDouble(4, time);
+				
+			}else {
+				sql = "SELECT * FROM T_RESTAURANTE WHERE"
+						+ " NM_END_ORI = ? AND"
+						+ " NR_DIST_REST <= ? AND"
+						+ " NR_DIST_REST > ? AND"
+						+ " DS_PRAZO_REST <= ? AND"
+						+ " DS_PRAZO_REST > ?";
+				
+				stmt= conexao.prepareStatement(sql);
+				stmt.setString(1, adr);
+				stmt.setDouble(2, range);
+				stmt.setDouble(3, range-1);
+				stmt.setDouble(4, time);
+				stmt.setDouble(5, time - 15);
+			}
+			
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				result += 1;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
@@ -156,6 +210,8 @@ public class Service implements InterfaceRestaurante{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 	
 

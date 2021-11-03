@@ -10,6 +10,8 @@ public interface InterfaceRestaurante {
 	
 	public abstract Integer getQtdByAdrRangeRate(String adr, Double range, String rate);
 	
+	public abstract Integer getQtdByAdrRangeRate(String adr, Double range, Integer time);
+	
 	public abstract Integer getQtdByAdrTypeRange(String adr, String type, Double range);
 	
 	public abstract Integer getQtdByAdrTypeRangeRate(String adr, String type, Double range, String rate);
