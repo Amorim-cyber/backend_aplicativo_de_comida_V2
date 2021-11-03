@@ -230,7 +230,7 @@ public class Service implements InterfaceRestaurante{
 				Long id = rs.getLong("ID_REST");
 				String img = rs.getString("DS_IMG_REST");
 				String nome = rs.getString("NM_REST");
-				String rates = rs.getString("NR_RAT_REST");
+				String rate = rs.getString("NR_RAT_REST");
 				String tipo = rs.getString("DS_TIPO_REST");
 				Double distancia = rs.getDouble("NR_DIST_REST");
 				Integer prazo = rs.getInt("DS_PRAZO_REST");
@@ -241,7 +241,7 @@ public class Service implements InterfaceRestaurante{
 				
 				Restaurante restaurante = 
 				new Restaurante(id, img,
-						nome, rates,
+						nome, rate,
 						tipo, distancia, prazo,
 						frete, desconto,
 						url, endereco);
