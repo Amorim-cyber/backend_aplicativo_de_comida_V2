@@ -1,6 +1,6 @@
-package com.aplicativo.de.comida.entities;
+package com.aplicativo.de.comida.entities.dao;
 
-public class Restaurante {
+public class RestauranteDAO {
 	
 	private Long id;
 	private String srcImg;
@@ -14,29 +14,9 @@ public class Restaurante {
 	private String url;
 	private String address;
 	private String latitude;
-	private String longitude;
+	private String logitude;
 	
-	public Restaurante() {
-	}
-
-	public Restaurante(Long id, String srcImg,
-			String name, String rate,
-			String type, Double range, Integer time,
-			String shipment, String discount,
-			String url, String address, String latitude, String longitude) {
-		this.id = id;
-		this.srcImg = srcImg;
-		this.name = name;
-		this.rate = rate;
-		this.type = type;
-		this.range = range;
-		this.time = time;
-		this.shipment = shipment;
-		this.discount = discount;
-		this.url = url;
-		this.address = address;
-		this.latitude = latitude;
-		this.longitude = longitude;
+	public RestauranteDAO() {
 	}
 	
 	public Long getId() {
@@ -105,23 +85,14 @@ public class Restaurante {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-
-	public String getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
 	
+
+	@Override
+	public String toString() {
+		return "RestauranteDAO [id=" + id + ", srcImg=" + srcImg + ", name=" + name + ", rate=" + rate + ", type="
+				+ type + ", range=" + range + ", time=" + time + ", shipment=" + shipment + ", discount=" + discount
+				+ ", url=" + url + ", address=" + address + "]";
+	}
 	
 	
 

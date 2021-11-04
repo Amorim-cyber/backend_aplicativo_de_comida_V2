@@ -20,8 +20,7 @@ public class Mapper {
 		dao.setDiscount(restaurante.getDiscount());
 		dao.setUrl(restaurante.getUrl());
 		dao.setAddress(restaurante.getAddress());
-		dao.setLatitude(restaurante.getLatitude());
-		dao.setLongitude(restaurante.getLongitude());
+		
 		return dao;
 		
 	}
@@ -41,8 +40,7 @@ public class Mapper {
 		restaurante.setDiscount(dao.getDiscount());
 		restaurante.setUrl(dao.getUrl());
 		restaurante.setAddress(dao.getAddress());
-		restaurante.setLatitude(dao.getLatitude());
-		restaurante.setLongitude(dao.getLongitude());
+		
 		return restaurante;
 	}
 

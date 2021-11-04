@@ -340,15 +340,13 @@ public class Service implements InterfaceRestaurante{
 				String desconto = rs.getString("DS_DESC_REST");
 				String url = rs.getString("DS_URL_REST");
 				String endereco = rs.getString("NM_END_ORI");
-				String latitude = rs.getString("NR_LATITUDE").replace(",", ".");
-				String longitude = rs.getString("NR_LONGITUDE").replace(",", ".");
 				
 				Restaurante restaurante = 
 				new Restaurante(id, img,
 						nome, rates,
 						tipo, distancia, prazo,
 						frete, desconto,
-						url, endereco, latitude, longitude);
+						url, endereco);
 				
 				listaDAO.add(Mapper.toDAO(restaurante));
 			}
@@ -420,15 +418,13 @@ public class Service implements InterfaceRestaurante{
 				String desconto = rs.getString("DS_DESC_REST");
 				String url = rs.getString("DS_URL_REST");
 				String endereco = rs.getString("NM_END_ORI");
-				String latitude = rs.getString("NR_LATITUDE").replace(",", ".");
-				String longitude = rs.getString("NR_LONGITUDE").replace(",", ".");
 				
 				Restaurante restaurante = 
 				new Restaurante(id, img,
 						nome, rate,
 						tipo, distancia, prazo,
 						frete, desconto,
-						url, endereco,latitude,longitude);
+						url, endereco);
 				
 				listaDAO.add(Mapper.toDAO(restaurante));
 				
@@ -486,15 +482,13 @@ public class Service implements InterfaceRestaurante{
 				String desconto = rs.getString("DS_DESC_REST");
 				String url = rs.getString("DS_URL_REST");
 				String endereco = rs.getString("NM_END_ORI");
-				String latitude = rs.getString("NR_LATITUDE").replace(",", ".");
-				String longitude = rs.getString("NR_LONGITUDE").replace(",", ".");
 				
 				Restaurante restaurante = 
 				new Restaurante(id, img,
 						nome, rates,
 						tipo, distancia, prazo,
 						frete, desconto,
-						url, endereco, latitude, longitude);
+						url, endereco);
 				
 				listaDAO.add(Mapper.toDAO(restaurante));
 			}
@@ -572,15 +566,13 @@ public class Service implements InterfaceRestaurante{
 				String desconto = rs.getString("DS_DESC_REST");
 				String url = rs.getString("DS_URL_REST");
 				String endereco = rs.getString("NM_END_ORI");
-				String latitude = rs.getString("NR_LATITUDE").replace(",", ".");
-				String longitude = rs.getString("NR_LONGITUDE").replace(",", ".");
 				
 				Restaurante restaurante = 
 				new Restaurante(id, img,
 						nome, rate,
 						tipo, distancia, prazo,
 						frete, desconto,
-						url, endereco, latitude, longitude);
+						url, endereco);
 				
 				listaDAO.add(Mapper.toDAO(restaurante));
 			}

@@ -14,7 +14,7 @@ public class Restaurante {
 	private String url;
 	private String address;
 	private String latitude;
-	private String longitude;
+	private String logitude;
 	
 	public Restaurante() {
 	}
@@ -23,7 +23,7 @@ public class Restaurante {
 			String name, String rate,
 			String type, Double range, Integer time,
 			String shipment, String discount,
-			String url, String address, String latitude, String longitude) {
+			String url, String address, String latitude, String logitude) {
 		this.id = id;
 		this.srcImg = srcImg;
 		this.name = name;
@@ -36,7 +36,7 @@ public class Restaurante {
 		this.url = url;
 		this.address = address;
 		this.latitude = latitude;
-		this.longitude = longitude;
+		this.logitude = logitude;
 	}
 	
 	public Long getId() {
@@ -114,12 +114,12 @@ public class Restaurante {
 		this.latitude = latitude;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	public String getLogitude() {
+		return logitude;
 	}
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+	public void setLogitude(String logitude) {
+		this.logitude = logitude;
 	}
 	
 	

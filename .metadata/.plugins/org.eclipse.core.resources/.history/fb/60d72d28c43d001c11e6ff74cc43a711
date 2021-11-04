@@ -118,7 +118,7 @@ public class Restaurante {
 		return longitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLogitude(String longitude) {
 		this.longitude = longitude;
 	}
 	

@@ -3,7 +3,6 @@ INDEX VERSION 1.4+C:\Users\lucca\OneDrive\Documentos\outros\fiap\teste\.metadata
 3192540851.index
 1996947147.index
 1674824767.index
-1674824767.index
 198224935.index
 2950144913.index
 4091608605.index

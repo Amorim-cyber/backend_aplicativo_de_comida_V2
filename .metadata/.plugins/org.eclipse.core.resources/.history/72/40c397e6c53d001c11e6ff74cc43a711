@@ -18,9 +18,7 @@
 			<label >Endereço</label>
 			<select name="endereco" class="form-select" aria-label="Default select example">
   				<option selected> - </option>
-  				<option value="Av. Pres. Castelo Branco, 2836">Av. Pres. Castelo Branco, 2836</option>
-  				<option value="R. Barão de Aratanha, 10">R. Barão de Aratanha, 10</option>
-  				<option value="Rua dos Guajajaras, s/n">Rua dos Guajajaras, s/n</option>
+  				<option value="Rua Desembargador Roberto medeiros, 70">Rua Desembargador Roberto medeiros, 70</option>
 			</select>
 		</div>
 		<div class="form-group">

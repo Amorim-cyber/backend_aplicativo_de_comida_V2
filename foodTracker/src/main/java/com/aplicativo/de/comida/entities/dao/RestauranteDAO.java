@@ -13,14 +13,10 @@ public class RestauranteDAO {
 	private String discount;
 	private String url;
 	private String address;
-	
+	private String latitude;
+	private String longitude;
 	
 	public RestauranteDAO() {
-	}
-
-	public RestauranteDAO(String address, Double range) {
-		this.range = range;
-		this.address = address;
 	}
 	
 	public Long getId() {
@@ -90,11 +86,20 @@ public class RestauranteDAO {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "RestauranteDAO [id=" + id + ", srcImg=" + srcImg + ", name=" + name + ", rate=" + rate + ", type="
-				+ type + ", range=" + range + ", time=" + time + ", shipment=" + shipment + ", discount=" + discount
-				+ ", url=" + url + ", address=" + address + "]";
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 	
 	
