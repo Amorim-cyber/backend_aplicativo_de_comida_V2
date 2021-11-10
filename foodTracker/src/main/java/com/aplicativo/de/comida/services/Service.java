@@ -28,7 +28,6 @@ public class Service implements InterfaceRestaurante{
 			conexao= DBManager.obterConexao();
 			String sql = "SELECT * FROM T_RESTAURANTE WHERE"
 					+ " NM_END_ORI = ? AND"
-					+ " NR_RAT_REST NOT LIKE 'N%' AND"
 					+ " NR_DIST_REST <= ? AND"
 					+ " NR_DIST_REST > ?";
 			stmt= conexao.prepareStatement(sql);
@@ -67,9 +66,8 @@ public class Service implements InterfaceRestaurante{
 					+ " NM_END_ORI = ? AND"
 					+ " NR_DIST_REST <= ? AND"
 					+ " NR_DIST_REST > ? AND"
-					+ " NR_RAT_REST NOT LIKE 'N%' AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') <= ? AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') > ?";
+					+ " NR_RAT_REST <= ? AND"
+					+ " NR_RAT_REST > ?";
 			stmt= conexao.prepareStatement(sql);
 			stmt.setString(1, adr);
 			stmt.setDouble(2, range);
@@ -110,7 +108,6 @@ public class Service implements InterfaceRestaurante{
 			if(time > 60) {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
 						+ " DS_PRAZO_REST > ?";
@@ -124,7 +121,6 @@ public class Service implements InterfaceRestaurante{
 			}else {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
 						+ " DS_PRAZO_REST <= ? AND"
@@ -167,7 +163,6 @@ public class Service implements InterfaceRestaurante{
 			conexao= DBManager.obterConexao();
 			String sql = "SELECT * FROM T_RESTAURANTE WHERE"
 					+ " NM_END_ORI = ? AND"
-					+ " NR_RAT_REST NOT LIKE 'N%' AND"
 					+ " DS_TIPO_REST = ? AND"
 					+ " NR_DIST_REST <= ? AND"
 					+ " NR_DIST_REST > ?";
@@ -209,9 +204,8 @@ public class Service implements InterfaceRestaurante{
 					+ " NR_DIST_REST <= ? AND"
 					+ " NR_DIST_REST > ? AND"
 					+ " DS_TIPO_REST = ? AND"
-					+ " NR_RAT_REST NOT LIKE 'N%' AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') <= ? AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') > ?";
+					+ " NR_RAT_REST <= ? AND"
+					+ " NR_RAT_REST > ?";
 			stmt= conexao.prepareStatement(sql);
 			stmt.setString(1, adr);
 			stmt.setDouble(2, range);
@@ -219,7 +213,7 @@ public class Service implements InterfaceRestaurante{
 			stmt.setString(4, type);
 			stmt.setDouble(5, Double.parseDouble(rate));
 			stmt.setDouble(6, Double.parseDouble(rate)-0.5); 
-			
+			System.out.println(Double.parseDouble(rate)-0.5);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				result += 1;
@@ -253,7 +247,6 @@ public class Service implements InterfaceRestaurante{
 			if(time > 60) {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " DS_TIPO_REST = ? AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
@@ -269,7 +262,6 @@ public class Service implements InterfaceRestaurante{
 			}else {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " DS_TIPO_REST = ? AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
@@ -317,9 +309,8 @@ public class Service implements InterfaceRestaurante{
 					+ " NM_END_ORI = ? AND"
 					+ " NR_DIST_REST <= ? AND"
 					+ " NR_DIST_REST > ? AND"
-					+ " NR_RAT_REST NOT LIKE 'N%' AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') <= ? AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') > ?";
+					+ " NR_RAT_REST <= ? AND"
+					+ " NR_RAT_REST > ?";
 			stmt= conexao.prepareStatement(sql);
 			stmt.setString(1, adr);
 			stmt.setDouble(2, range);
@@ -380,7 +371,6 @@ public class Service implements InterfaceRestaurante{
 			if(time > 60) {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
 						+ " DS_PRAZO_REST > ?";
@@ -394,7 +384,6 @@ public class Service implements InterfaceRestaurante{
 			}else {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
 						+ " DS_PRAZO_REST <= ? AND"
@@ -462,9 +451,8 @@ public class Service implements InterfaceRestaurante{
 					+ " NR_DIST_REST <= ? AND"
 					+ " NR_DIST_REST > ? AND"
 					+ " DS_TIPO_REST = ? AND"
-					+ " NR_RAT_REST NOT LIKE 'N%' AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') <= ? AND"
-					+ " TO_NUMBER(NR_RAT_REST,'9.9') > ?";
+					+ " NR_RAT_REST <= ? AND"
+					+ " NR_RAT_REST > ?";
 			stmt= conexao.prepareStatement(sql);
 			stmt.setString(1, adr);
 			stmt.setDouble(2, range);
@@ -527,7 +515,6 @@ public class Service implements InterfaceRestaurante{
 			if(time > 60) {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " DS_TIPO_REST = ? AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
@@ -543,7 +530,6 @@ public class Service implements InterfaceRestaurante{
 			}else {
 				sql = "SELECT * FROM T_RESTAURANTE WHERE"
 						+ " NM_END_ORI = ? AND"
-						+ " NR_RAT_REST NOT LIKE 'N%' AND"
 						+ " DS_TIPO_REST = ? AND"
 						+ " NR_DIST_REST <= ? AND"
 						+ " NR_DIST_REST > ? AND"
@@ -604,4 +590,3 @@ public class Service implements InterfaceRestaurante{
 	
 
 }
-

@@ -77,12 +77,14 @@
 		<h1>Resultado</h1>
 		<table class="table table-striped" >
 			<tr>
+				<th>Endereço</th>
 				<th>Total Restaurantes</th>
 				<th>Tipo</th>
 				<th>Distância</th>
 			</tr>
 			<c:if test="${not empty param.endereco}">
 			<tr>
+				<td><%= end %></td>
 				<td><%= total %></td>
 				<td><%= tipo %></td>
 				<td><%= range %></td>
@@ -120,6 +122,36 @@
 					</button>
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<ul>
+						<c:forEach var = "r1" items="${listaRate1}">
+							<li> ${r1.getLatitude()} / ${r1.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<c:forEach var = "r2" items="${listaRate2}">
+							<li> ${r2.getLatitude()} / ${r2.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<c:forEach var = "r3" items="${listaRate3}">
+							<li> ${r3.getLatitude()} / ${r3.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<c:forEach var = "r4" items="${listaRate4}">
+							<li> ${r4.getLatitude()} / ${r4.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+			</tr>
 			</c:if>
 		</table>
 		<h1>Quantidade por prazo</h1>
@@ -151,6 +183,36 @@
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#time4">
 	  					<%= time4 %>
 					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<ul>
+						<c:forEach var = "t1" items="${listaTime1}">
+							<li> ${t1.getLatitude()} / ${t1.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<c:forEach var = "t2" items="${listaTime2}">
+							<li> ${t2.getLatitude()} / ${t2.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<c:forEach var = "t3" items="${listaTime3}">
+							<li> ${t3.getLatitude()} / ${t3.getLongitude()}</li>
+						</c:forEach>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<c:forEach var = "t4" items="${listaTime4}">
+							<li> ${t4.getLatitude()} / ${t4.getLongitude()}</li>
+						</c:forEach>
+					</ul>
 				</td>
 			</tr>
 			</c:if>
