@@ -1,0 +1,54 @@
+
+		<div class="row">
+            <div class="col-10 offset-1 rest-aval">
+                <i class="fa fa-star"></i>&nbsp;Avaliações
+                <br>
+               <div class="row">
+                  <div class="col-3">
+                    <div class="rest-aval-qtde">
+                    	<button data-toggle="modal" data-target="#rate1">
+                    	<%= rate1 %>
+                    	</button>
+                    </div>
+                    <p>5.0 - 4.5 estrelas</p>
+                  </div>
+                  <div class="col-3">
+                    <div class="rest-aval-qtde"><%= rate2 %></div>
+                    <p>4.5 - 4.0 estrelas</p>
+                  </div>
+                  <div class="col-3">
+                    <div class="rest-aval-qtde"><%= rate3 %></div>
+                    <p>4.0 - 3.5 estrelas</p>
+                  </div>
+                  <div class="col-3">
+                    <div class="rest-aval-qtde"><%= rate4 %></div>
+                    <p>3.5 - 3.0 estrelas</p>
+                  </div>
+               </div>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="col-10 offset-1 rest-praz">
+                <i class="fa fa-stopwatch"></i>&nbsp;Prazos
+                <br>
+               <div class="row">
+                  <div class="col-3">
+                    <div class="rest-praz-qtde green"><%= time1 %></div>
+                    <p>15 - 30 min</p>
+                  </div>
+                  <div class="col-3">
+                    <div class="rest-praz-qtde yellow"><%= time2 %></div>
+                    <p>30 - 45 min</p>
+                  </div>
+                  <div class="col-3">
+                    <div class="rest-praz-qtde orange"><%= time3 %></div>
+                    <p>45 - 60 min</p>
+                  </div>
+                  <div class="col-3">
+                    <div class="rest-praz-qtde red"><%= time4 %></div>
+                    <p>> 60 min</p>
+                  </div>
+               </div>
+            </div>
+          </div>

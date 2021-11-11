@@ -1,0 +1,26 @@
+<div class="modal fade" id="rate1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Lista restaurantes 5.0 - 4.5 estrelas</h5>
+          </div>
+          <div class="modal-body">
+                  <c:forEach var = "r1" items="${listaRate1}">
+                  <div class="card" style="margin-bottom: 5px;">
+                  <div class="card-body">
+                      <img src="${r1.getSrcImg()}" class="img"></img>
+                    <div class="details">
+                        <a href="${r1.getUrl()}" target="_blank">${r1.getName()}</a>
+                        <span>Rating: ${r1.getRate()} | Tipo: ${r1.getType()} | Distância: ${r1.getRange()} km | Prazo máx: ${r1.getTime()} min | Frete: ${r1.getShipment()} | ${r1.getDiscount()}
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                  </c:forEach>	
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+</div>

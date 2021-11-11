@@ -1,0 +1,176 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.aplicativo.de.comida.services.Service"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<% 
+	Service service = new Service();
+	String end = request.getParameter("endereco"); 
+	String tipo = request.getParameter("tipo"); 
+	String range = request.getParameter("inlineRadioOptions");
+	Double dist = null;
+	
+	Integer total = 0;
+	
+	Integer rate1 = 0;
+	Integer rate2 = 0;
+	Integer rate3 = 0;
+	Integer rate4 = 0;
+	
+	Integer time1 = 0;
+	Integer time2 = 0;
+	Integer time3 = 0;
+	Integer time4 = 0;
+	
+	if(range != null && !range.equals("distância (km)")){
+		dist = Double.parseDouble(request.getParameter("inlineRadioOptions").split("-")[1].replace(" km", ""));
+		
+		
+		if(tipo.equals("Todos")){
+			total = service.getQtdByAdrRange(end, dist);
+			
+			rate1 = service.getQtdByAdrRangeRate(end, dist, "5.0");
+			request.setAttribute("listaRate1",service.getListByAdrRangeRate(end, dist, "5.0"));
+			rate2 = service.getQtdByAdrRangeRate(end, dist, "4.5");
+			request.setAttribute("listaRate2",service.getListByAdrRangeRate(end, dist, "4.5"));
+			rate3 = service.getQtdByAdrRangeRate(end, dist, "4.0");
+			request.setAttribute("listaRate3",service.getListByAdrRangeRate(end, dist, "4.0"));
+			rate4 = service.getQtdByAdrRangeRate(end, dist, "3.5");
+			request.setAttribute("listaRate4",service.getListByAdrRangeRate(end, dist, "4.5"));
+			
+			time1 = service.getQtdByAdrRangeTime(end, dist, 30);
+			request.setAttribute("listaTime1",service.getListByAdrRangeTime(end, dist, 30));
+			time2 = service.getQtdByAdrRangeTime(end, dist, 45);
+			request.setAttribute("listaTime2",service.getListByAdrRangeTime(end, dist, 45));
+			time3 = service.getQtdByAdrRangeTime(end, dist, 60);
+			request.setAttribute("listaTime3",service.getListByAdrRangeTime(end, dist, 60));
+			time4 = service.getQtdByAdrRangeTime(end, dist, 61);
+			request.setAttribute("listaTime4",service.getListByAdrRangeTime(end, dist, 61));
+		}else{
+			total = service.getQtdByAdrTypeRange(end, tipo,dist);
+			
+			rate1 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "5.0");
+			request.setAttribute("listaRate1",service.getListByAdrTypeRangeRate(end, tipo, dist, "5.0"));
+			rate2 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "4.5");
+			request.setAttribute("listaRate2",service.getListByAdrTypeRangeRate(end, tipo, dist, "4.5"));
+			rate3 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "4.0");
+			request.setAttribute("listaRate3",service.getListByAdrTypeRangeRate(end, tipo, dist, "4.0"));
+			rate4 = service.getQtdByAdrTypeRangeRate(end, tipo, dist, "3.5");
+			request.setAttribute("listaRate4",service.getListByAdrTypeRangeRate(end, tipo, dist, "4.5"));
+			
+			time1 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 30);
+			request.setAttribute("listaTime1",service.getListByAdrTypeRangeTime(end, tipo, dist, 30));
+			time2 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 45);
+			request.setAttribute("listaTime2",service.getListByAdrTypeRangeTime(end, tipo, dist, 45));
+			time3 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 60);
+			request.setAttribute("listaTime3",service.getListByAdrTypeRangeTime(end, tipo, dist, 60));
+			time4 = service.getQtdByAdrTypeRangeTime(end, tipo, dist, 61);
+			request.setAttribute("listaTime4",service.getListByAdrTypeRangeTime(end, tipo, dist, 61));
+			
+		}
+		
+		
+	}
+		
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Tracker</title>
+<%@ include file="Header.jsp" %>
+</head>
+<body>
+<div class="header">
+      <img src="resources/img/racker 2.png" alt="Tracker">
+      <img src="resources/img/logoifood 2.png" alt="Ifood">
+  </div>
+  <div id="map"></div>
+  <form action="Main.jsp" method="get">
+  	<div class="painel">
+    <div class="godown">
+      <div class="bar"></div>
+    </div> 
+    <div class="container cont">
+          <div class="header-desk">
+            <img src="resources/img/racker 1.png" alt="Tracker">
+            <img src="resources/img/logoifood 1.png" alt="Ifood">
+          </div>
+          <div class="row search">
+              <div class="col-10 offset-1">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend addsamecolor">
+                    <span class="input-group-text addsamecolor" id="basic-addon1"><i class="fa fa-search"></i></span>
+                  </div>
+                  <select name="endereco" class="form-control buscaendereco" aria-label="Default select example">
+	  				<option selected> Buscar por endereço </option>
+	  				<option value="Av. Pres. Castelo Branco, 2836">Av. Pres. Castelo Branco, 2836</option>
+	  				<option value="R. Barão de Aratanha, 10">R. Barão de Aratanha, 10</option>
+	  				<option value="Rua dos Guajajaras, s/n">Rua dos Guajajaras, s/n</option>
+				</select>
+                </div>              
+              </div>
+          </div>
+          
+          <div class="row near-rest">
+              <div class="col-3 offset-1">
+                  <div class="rest-qtde">
+                      <td><%= total %></td>
+                  </div>
+              </div>
+              <div class="col-3 text-near-rest">
+                  <p>Restaurantes<br> por<br> perto</p>
+              </div>
+              <div class="col-4 dist-rest">
+              		<select name="inlineRadioOptions" class="form-control buscadistancia" aria-label="Default select example">
+		  				<option selected> distância (km) </option>
+		  				<option value="0-1 km">0-1 km</option>
+		  				<option value="1-2 km">1-2 km</option>
+		  				<option value="2-3 km">2-3 km</option>
+		  				<option value="3-4 km">3-4 km</option>
+					</select>
+              </div>
+          </div>
+          <br><br>
+          <div class="row rest-types">
+              <div class="col-3 no-space">
+              		<button type="submit" value="Todos" name="tipo">
+              			<img src="resources/img/market.png" alt="Mercados"><br>
+                  		Todos
+              		</button>
+                  
+              </div>
+              <div class="col-3 no-space">
+              		<button type="submit" value="Lanches" name="tipo" >
+              			<img src="resources/img/lanche.png" alt="Mercados"><br>
+                  		Lanches
+              		</button>
+                  
+              </div>
+              <div class="col-3 no-space">
+              		<button type="submit" value="Pizza" name="tipo" >
+              			<img src="resources/img/Pizza.png" alt="Mercados"><br>
+                  		Pizza
+              		</button>
+              </div>
+              <div class="col-3 no-space">
+              		<button type="submit" value="Japonesa" name="tipo" >
+              			<img src="resources/img/Japonesa.png" alt="Mercados"><br>
+                  		Japonesa
+              		</button>
+                  
+              </div>
+          </div>
+          <br><br>
+          <%@ include file="Quantidades.jsp" %>
+        <br><br><br><br>
+    </div>           
+  </div>
+  </form>
+
+<%@ include file="Footer.jsp" %>
+</body>
+</html>

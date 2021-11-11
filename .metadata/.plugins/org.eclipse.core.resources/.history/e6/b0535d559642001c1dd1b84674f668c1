@@ -1,0 +1,82 @@
+let map;
+let markers = [];
+
+$( function() {
+   $(".godown").click(function(){
+        if($(".painel").css("height") == "40px"){
+            $(".painel").css("height","65%")    
+            $(".godown").css("height","10%")
+        }
+        else{
+            $(".godown").css("height",40)
+            $(".painel").css("height",40)
+        }    
+   })
+});
+
+function initMap() {
+    if (navigator.geolocation) {    
+        navigator.geolocation.getCurrentPosition(setMap,error);
+    }
+    else{
+        loadMap();
+    }   
+}
+
+function setMap(position) {
+    loadMap(position.coords.latitude,position.coords.longitude,16) 
+}
+
+function loadMap(lat = -23.6815315, lng = -46.8754967, zoom = 12){
+    var styleArray = [
+        {
+          featureType: "poi",
+          stylers: [
+            { visibility: "off" }
+          ]
+        }
+    ];
+
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: zoom,
+        center: { lat: lat, lng: lng },       
+        disableDefaultUI: true,
+        styles:styleArray
+    });
+
+    google.maps.event.addListener(map, "click", (event) => {
+        addMarker(event.latLng, map);
+    });
+}
+
+function error(error) {
+    console.log(error);
+    loadMap();
+}
+
+function addMarker(position) {
+    const marker = new google.maps.Marker({
+      position,
+      map,
+    });  
+    markers.push(marker);
+}
+
+function setMapOnAll(map) {
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+}
+
+function showMarkers() {
+    setMapOnAll(map);
+}
+
+function hideMarkers() {
+    setMapOnAll(null);
+}
+
+function deleteMarkers() {
+    hideMarkers();
+    markers = [];
+}

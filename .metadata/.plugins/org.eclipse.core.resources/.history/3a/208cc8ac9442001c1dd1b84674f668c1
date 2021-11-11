@@ -1,0 +1,6 @@
+<script type="text/javascript" src="resources/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/index.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8arU9AMBAMA3sZjsr4TcfJtxhzM4eUBM&callback=initMap&v=weekly&language=pt-br&region=BR"
+      async ></script>
